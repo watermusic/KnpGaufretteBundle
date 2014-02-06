@@ -1,3 +1,12 @@
+services:
+    foo.redis.client:
+        class: Predis\Client
+        arguments:
+           -
+               host: '127.0.0.1'
+               port: 6379
+               database: 15
+
 knp_gaufrette:
     adapters:
         foo_local:
@@ -12,6 +21,11 @@ knp_gaufrette:
                 directory: /example/ftp
                 create: true
                 mode: FTP_BINARY
+        foo_redis:
+            redis:
+                service_id: 'foo.redis.client'
+                options:
+                    ttl: 60
         foo_cache:
             cache:
                 source: foo_ftp
@@ -28,3 +42,6 @@ knp_gaufrette:
         ftp:
             adapter:        foo_ftp
             alias:          ftp_filesystem
+        redis:
+            adapter:        foo_redis
+            alias:          redis_filesystem
