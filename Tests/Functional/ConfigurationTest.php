@@ -84,6 +84,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      * @test
      * @functional
      */
+    public function shouldAllowAccessToFreeLocalFilesystem()
+    {
+        $this->assertInstanceOf('Gaufrette\Adapter\FreeLocal', $this->kernel->getContainer()->get('foo_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     * @functional
+     */
     public function shouldAllowAccessToCacheFilesystem()
     {
         $this->assertInstanceOf('Gaufrette\Adapter\Cache', $this->kernel->getContainer()->get('cache_filesystem')->getAdapter());
@@ -98,14 +107,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Gaufrette\Adapter\Ftp', $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
     }
 
-    /**
-     * @test
-     * @functional
-     */
-    public function shouldAllowAccessToRedisFilesystem()
-    {
-        $this->assertInstanceOf('Gaufrette\Adapter\Redis', $this->kernel->getContainer()->get('redis_filesystem')->getAdapter());
-    }
+//    /**
+//     * @test
+//     * @functional
+//     */
+//    public function shouldAllowAccessToRedisFilesystem()
+//    {
+//        $this->assertInstanceOf('Gaufrette\Adapter\Redis', $this->kernel->getContainer()->get('redis_filesystem')->getAdapter());
+//    }
 
     /**
      * @test

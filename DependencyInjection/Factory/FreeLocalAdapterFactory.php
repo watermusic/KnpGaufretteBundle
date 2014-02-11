@@ -21,7 +21,8 @@ class FreeLocalAdapterFactory implements AdapterFactoryInterface
         $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.free_local'))
             ->replaceArgument(0, $config['directory'])
-            ->replaceArgument(1, $config['create'])
+            ->replaceArgument(1, $config['host'])
+            ->replaceArgument(2, $config['create'])
         ;
     }
 
@@ -41,6 +42,7 @@ class FreeLocalAdapterFactory implements AdapterFactoryInterface
         $node
             ->children()
                 ->scalarNode('directory')->isRequired()->end()
+                ->scalarNode('host')->isRequired()->end()
                 ->booleanNode('create')->defaultTrue()->end()
             ->end()
         ;

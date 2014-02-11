@@ -24,6 +24,7 @@
         </service>
         <service id="knp_gaufrette.adapter.free_local" class="Gaufrette\Adapter\FreeLocal" abstract="true" public="false">
             <argument /><!-- Directory -->
+            <argument /><!-- Host -->
             <argument /><!-- Create -->
         </service>
         <service id="knp_gaufrette.adapter.amazon_s3" class="Gaufrette\Adapter\AmazonS3" abstract="true" public="false" />
